@@ -16,7 +16,6 @@ The imported CSS rules must precede all other types of rules.
 
    .articles{
        width: 100%;
-       margin-top: 35;
    }
    .article{
         min-height: 150;

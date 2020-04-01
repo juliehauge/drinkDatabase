@@ -1,11 +1,11 @@
 <script>
-    export let drinks
+    import Gin from './Gin.svelte'
 
     let searchPhrase = ''
-    const onSearchSubmit = () => {
-        drinks.filter( 
-                drink => drink.strDrink.toLowerCase().includes(searchPhrase.toLocaleLowerCase()
-            )) 
+    
+    const searchedDrink = (evt) => {
+        const {value} = this.elements.search
+        searchPhrase = value
     }
 </script>
 
@@ -15,7 +15,7 @@
     <searchBar 
         hint='what drink would you like to make?' 
         bind:text='{searchPhrase}' 
-        on:submit='{onSearchSubmit}'
+        on:submit|preventDefault='{searchedDrink}'
         />
         <image 
             class='img' 

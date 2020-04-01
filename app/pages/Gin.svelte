@@ -5,7 +5,15 @@
   
     let drinkType = 'gin'
     const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkType}`
+
+    export let searchPhrase = undefined
     let drinks = []
+
+    $: regex = new RegExp(searchPhrase, 'gi')
+    $: data = searchPhrase
+        ? drinks.filter(element => element.strDrink.match(regex))
+        : drinks
+    
 
     onMount(() => {
         fetch(url)

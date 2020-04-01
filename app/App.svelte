@@ -26,18 +26,18 @@
     <bottomNavigation>
         <tabStrip backgroundColor='lightyellow'>
             <tabStripItem>
-                <label class='navText' text="Home" />	
+                <label class='navText home' text="Home" />	
             </tabStripItem>
             <tabStripItem>
                 <label class='navText' text="Gin" />	
             </tabStripItem>
-            <tabStripItem class="special">
+            <tabStripItem >
                 <label class='navText' text="Vodka"/>
             </tabStripItem>
-            <tabStripItem class="special">
+            <tabStripItem >
                 <label class='navText' text="Tequila" />
             </tabStripItem>
-            <tabStripItem class="special">
+            <tabStripItem >
                 <label class='navText' text="Rum" />
             </tabStripItem>
         </tabStrip>
@@ -47,6 +47,7 @@
             <Home on:tap={() => navigate({ page: Home})}/>
             </stackLayout>
         </tabContentItem>
+
         <tabContentItem > 
             <stackLayout>
             <Gin on:tap={() => navigate({ page: Gin})}/>
@@ -77,6 +78,9 @@
 <style>
     .navText{
         text-transform: uppercase;
-        font-weight: 600;
+        font-weight: 400;
+    }
+    .home{
+        font-weight: 700;
     }
 </style>
