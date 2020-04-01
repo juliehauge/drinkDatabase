@@ -1,32 +1,33 @@
 
 <script>
-    import {onMount} from 'svelte'
-    import {showModal} from 'svelte-native'
-    import {navigate} from 'svelte-native'
-    import Drink from './modals/Drink.svelte' 
-    import Vodka from './Vodka.svelte'
-    import Tequila from './Tequila.svelte'
-    import Gin from './Gin.svelte'
-    import Rum from './Rum.svelte'
-  
+    import { navigate } from 'svelte-native'
+    import Drink from './modals/Drink.svelte'
+    import Vodka from './pages/Vodka.svelte'
+    import Tequila from './pages/Tequila.svelte'
+    import Gin from './pages/Gin.svelte'
+    import Rum from './pages/Rum.svelte' 
+    import Home from './pages/Home.svelte'
 </script>
 
 <page>
-    <actionBar backgroundColor='lightyellow'>
-    <stackLayout orientation="vertical">
+
+   <actionBar 
+        backgroundColor='lightyellow'
+        flat='true'>
         <label 
             text='Drink Recipes' 
-            fontSize='24' 
-            padding='0'
             textTransform='uppercase' 
-            fontWeight='400' 
-            verticalAlignment="center"/>  
-    </stackLayout> 
+            fontWeight='400'
+            fontSize='24'
+           />
     </actionBar>
-  
-
+    
+ 
     <bottomNavigation>
         <tabStrip backgroundColor='lightyellow'>
+            <tabStripItem>
+                <label class='navText' text="Home" />	
+            </tabStripItem>
             <tabStripItem>
                 <label class='navText' text="Gin" />	
             </tabStripItem>
@@ -41,21 +42,34 @@
             </tabStripItem>
         </tabStrip>
 
-        <tabContentItem>
-            <Gin on:tap='{() => navigate({ page: Gin})}'/>
+        <tabContentItem > 
+            <stackLayout>
+            <Home on:tap={() => navigate({ page: Home})}/>
+            </stackLayout>
+        </tabContentItem>
+        <tabContentItem > 
+            <stackLayout>
+            <Gin on:tap={() => navigate({ page: Gin})}/>
+            </stackLayout>
         </tabContentItem>
 
         <tabContentItem>
-            <Vodka on:tap='{() => navigate({ page: Vodka})}'/>
+           <stackLayout>
+            <Vodka on:tap={() => navigate({ page: Vodka})}/>
+            </stackLayout>
         </tabContentItem>
         
         <tabContentItem>
-            <Tequila on:tap='{() => navigate({ page: Tequila})}'/>
+           <stackLayout>
+            <Tequila on:tap={() => navigate({ page: Tequila})}/>
+            </stackLayout>
         </tabContentItem>
 
         <tabContentItem>
-            <Rum on:tap='{() => navigate({ page: Rum})}'/>
-        </tabContentItem>
+            <stackLayout>
+            <Rum on:tap={() => navigate({ page: Rum})}/>
+            </stackLayout>
+        </tabContentItem> 
     </bottomNavigation>
 </page>
 

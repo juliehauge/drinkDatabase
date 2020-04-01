@@ -1,14 +1,11 @@
 <script>
     import {onMount} from 'svelte'
     import {showModal} from 'svelte-native'
-    import {navigate} from 'svelte-native'
-    import Drink from './modals/Drink.svelte' 
+    import Drink from '../modals/Drink.svelte' 
   
     let drinkType = 'gin'
     const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkType}`
-    
     let drinks = []
-
 
     onMount(() => {
         fetch(url)
@@ -30,13 +27,18 @@
             }
         )
     }
+    
 </script>
 
+<page>
 <stackLayout>
     <scrollView>
         <stackLayout class='articles'>
             {#each drinks as drink}
                 <stackLayout 
+                    borderColor='lightyellow'
+                    borderWidth='5'
+                    borderRadius='5'
                     class='article'
                     on:tap={() => showDrink(drink)}>
                     <label 
@@ -45,7 +47,7 @@
                         text='{drink.strDrink}'
                         />
                     <image 
-                        class='img-rounded' 
+                        class='img-rounded img' 
                         src='{drink.strDrinkThumb}' 
                         alt='cover' 
                         stretch='aspectFill' 
@@ -57,3 +59,8 @@
         </stackLayout>
     </scrollView>
 </stackLayout>
+</page>
+
+<style>
+   
+</style>
