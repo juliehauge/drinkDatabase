@@ -38,7 +38,7 @@
     
 </script>
 
-<page>
+
 <stackLayout>
     <scrollView>
         <stackLayout class='articles'>
@@ -67,7 +67,6 @@
         </stackLayout>
     </scrollView>
 </stackLayout>
-</page>
 
 <style>
    
