@@ -6,23 +6,20 @@
     import Tequila from './pages/Tequila.svelte'
     import Gin from './pages/Gin.svelte'
     import Rum from './pages/Rum.svelte' 
-    import Home from './pages/Home.svelte'
 </script>
 
 <page>
 
    <actionBar 
-        backgroundColor='lightyellow'
-        flat='true'>
+        backgroundColor='lightyellow'>
         <label 
-            text='Drink Recipes' 
+            text='Cocktail Recipes' 
             textTransform='uppercase' 
             fontWeight='400'
             fontSize='24'
            />
     </actionBar>
-    
- 
+
     <bottomNavigation>
         <tabStrip backgroundColor='lightyellow'>
             <tabStripItem>
@@ -42,10 +39,13 @@
             </tabStripItem>
         </tabStrip>
 
-        <tabContentItem > 
+        <tabContentItem> 
             <stackLayout>
-            <Home on:tap={() => navigate({ page: Home})}/>
-            </stackLayout>
+                <image 
+                    class='img' 
+                    src='https://dbdzm869oupei.cloudfront.net/img/sticker/preview/20007.png' 
+                    stretch='aspectFill'/>
+            </stackLayout>  
         </tabContentItem>
 
         <tabContentItem > 
@@ -82,5 +82,8 @@
     }
     .home{
         font-weight: 700;
+    }
+    .img{
+        margin: 70 0;
     }
 </style>

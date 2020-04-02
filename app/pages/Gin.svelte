@@ -5,14 +5,8 @@
   
     let drinkType = 'gin'
     const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkType}`
-
-    export let searchPhrase = undefined
     let drinks = []
-
-    $: regex = new RegExp(searchPhrase, 'gi')
-    $: data = searchPhrase
-        ? drinks.filter(element => element.strDrink.match(regex))
-        : drinks
+    
     
 
     onMount(() => {
@@ -35,39 +29,65 @@
             }
         )
     }
-    
+
+
+    let searchPhrase = ''
+    $: searchedDrink = drinks.filter(drink => drink.strDrink.includes(searchPhrase))
 </script>
 
 
 <stackLayout>
+    <searchBar 
+        hint='what gin cocktail would you like to make?' 
+        bind:text='{searchPhrase}' 
+        />
     <scrollView>
         <stackLayout class='articles'>
-            {#each drinks as drink}
-                <stackLayout 
-                    borderColor='lightyellow'
-                    borderWidth='5'
-                    borderRadius='5'
-                    class='article'
-                    on:tap={() => showDrink(drink)}>
-                    <label 
-                        textwrap="{true}"
-                        class='h2 text-center white'
-                        text='{drink.strDrink}'
-                        />
-                    <image 
-                        class='img-rounded img' 
-                        src='{drink.strDrinkThumb}' 
-                        alt='cover' 
-                        stretch='aspectFill' 
-                        />
-                </stackLayout>   
+            {#if searchPhrase}
+                {#each searchedDrink as search}
+                    <stackLayout 
+                        borderColor='lightyellow'
+                        borderWidth='5'
+                        borderRadius='5'
+                        class='article'
+                        on:tap={() => showDrink(search)}>
+                        <label 
+                            textwrap="{true}"
+                            class='h2 text-center white'
+                            text='{search.strDrink}'
+                            />
+                        <image 
+                            class='img-rounded img' 
+                            src='{search.strDrinkThumb}' 
+                            alt='cover' 
+                            stretch='aspectFill' 
+                            />
+                    </stackLayout>  
+                    {/each} 
             {:else}
+                {#each drinks as drink}
+                    <stackLayout 
+                        borderColor='lightyellow'
+                        borderWidth='5'
+                        borderRadius='5'
+                        class='article'
+                        on:tap={() => showDrink(drink)}>
+                        <label 
+                            textwrap="{true}"
+                            class='h2 text-center white'
+                            text='{drink.strDrink}'
+                            />
+                        <image 
+                            class='img-rounded img' 
+                            src='{drink.strDrinkThumb}' 
+                            alt='cover' 
+                            stretch='aspectFill' 
+                            />
+                    </stackLayout>   
+                {:else}
                 <activityIndicator busy={true}/>
-            {/each}         
+            {/each}
+            {/if}       
         </stackLayout>
     </scrollView>
 </stackLayout>
-
-<style>
-   
-</style>
