@@ -1,7 +1,6 @@
 <script>
     import {onMount} from 'svelte'
     import {showModal} from 'svelte-native'
-  
     import Drink from '../modals/Drink.svelte' 
   
     let drinkType = 'rum'

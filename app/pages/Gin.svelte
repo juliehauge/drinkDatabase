@@ -2,12 +2,10 @@
     import {onMount} from 'svelte'
     import {showModal} from 'svelte-native'
     import Drink from '../modals/Drink.svelte' 
-  
+
     let drinkType = 'gin'
     const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkType}`
     let drinks = []
-    
-    
 
     onMount(() => {
         fetch(url)
@@ -29,7 +27,6 @@
             }
         )
     }
-
 
     let searchPhrase = ''
     $: searchedDrink = drinks.filter(drink => drink.strDrink.includes(searchPhrase))
