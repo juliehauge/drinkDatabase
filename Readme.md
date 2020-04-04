@@ -1,7 +1,7 @@
 # Cocktail Recipes App
 This is a simple App for IOS that connects to an <a href='https://www.thecocktaildb.com/api.php'>API</a> with a fetch call, to display a list of drinks. With the navigation bar, one can navigate between each page where the different drink recipes are displayed. One is also able to search for a specific drink on each page.
 
-It uses the <a href='https://svelte-native.technology/docs'>svelte-native</a> framework to build a native application. Svelte-native to build on top of <a href='https://nativescript.org'>Nativesript</a>, so you need to go through the setup guide there in order to install the TNS CLI tools.
+It uses the <a href='https://svelte-native.technology/docs'>svelte-native</a> framework to build a native application. Svelte-native to build on top of <a href='https://nativescript.org'>Nativescript</a>, so you need to go through the setup guide there in order to install the TNS CLI tools.
 
 ## Set up
 ```html
